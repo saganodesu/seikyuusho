@@ -373,7 +373,7 @@
     <div class="corporate-header">
         <div class="brand">
             <h1>📄 見積書・請求書システム</h1>
-            <small>株式会社メカワーク — 確かな技術で物流を支える</small>
+            <small>株式会社メカワーク </small>
         </div>
         <div class="company-address">
             〒551-0003 大阪府大阪市大正区千島2-4UR 千島団地2-611<br>
@@ -383,15 +383,15 @@
     </div>
 
     <div class="tab-bar">
-        <button class="tab active" data-tab="list">📋 一覧表示</button>
-        <button class="tab" data-tab="add">➕ 新規登録</button>
-        <button class="tab" data-tab="print">🖨️ 書類印刷</button>
-        <button class="tab" data-tab="stats">📊 集計ダッシュボード</button>
+        <button class="tab active" data-tab="list"> 一覧表示</button>
+        <button class="tab" data-tab="add"> 新規登録</button>
+        <button class="tab" data-tab="print"> 書類印刷</button>
+        <button class="tab" data-tab="stats"> 集計ダッシュボード</button>
     </div>
 
     <div id="listPanel" class="panel-base active-panel">
         <div style="display: flex; justify-content: flex-end; margin-bottom: 16px;">
-            <button class="btn-icon btn-delete" onclick="deleteSelected()" style="padding: 8px 18px;">🗑️ 選択した項目を削除</button>
+            <button class="btn-icon btn-delete" onclick="deleteSelected()" style="padding: 8px 18px;"> 選択した項目を削除</button>
         </div>
         <div class="data-table-wrapper">
             <table class="resizable-table" id="mainDataTable">
@@ -416,13 +416,13 @@
 
     <div id="addPanel" class="panel-base">
         <div class="form-grid">
-            <div><label>📅 日付</label><input type="date" id="newDate" class="input-field"></div>
-            <div><label>📄 書類種別</label><select id="newType" class="input-field"><option>見積書</option><option>請求書</option></select></div>
-            <div><label>🚛 車両</label><input type="text" id="newVehicle" class="input-field" placeholder="例：大阪100か1234"></div>
-            <div><label>🔧 作業内容</label><input list="workList" id="newWork" class="input-field" placeholder="例：ラジエーター交換"><datalist id="workList"></datalist></div>
-            <div><label>🔢 数量</label><input type="number" id="newQty" class="input-field" placeholder="例：2"></div>
-            <div><label>💰 単価 (円)</label><input type="number" id="newPrice" class="input-field" placeholder="例：12500"></div>
-            <div><label>🧾 金額 (円)</label><input type="number" id="newAmount" class="input-field" placeholder="自動計算推奨">
+            <div><label> 日付</label><input type="date" id="newDate" class="input-field"></div>
+            <div><label> 書類種別</label><select id="newType" class="input-field"><option>見積書</option><option>請求書</option></select></div>
+            <div><label> 車両</label><input type="text" id="newVehicle" class="input-field" placeholder="例：大阪100か1234"></div>
+            <div><label> 作業内容</label><input list="workList" id="newWork" class="input-field" placeholder="例：ラジエーター交換"><datalist id="workList"></datalist></div>
+            <div><label> 数量</label><input type="number" id="newQty" class="input-field" placeholder="例：2"></div>
+            <div><label> 単価 (円)</label><input type="number" id="newPrice" class="input-field" placeholder="例：12500"></div>
+            <div><label> 金額 (円)</label><input type="number" id="newAmount" class="input-field" placeholder="自動計算推奨">
                 <div class="checkbox-group"><input type="checkbox" id="linkCalc" checked><label for="linkCalc" style="margin:0; font-size:0.85rem;">数量 × 単価 を自動計算する</label></div>
             </div>
         </div>
