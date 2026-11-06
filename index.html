@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>請求書システム</title>
+    <title>請求書作成</title>
     <style>
         * {
             margin: 0;
@@ -397,7 +397,7 @@
             <table class="resizable-table" id="mainDataTable">
                 <thead>
                     <tr id="listHeader">
-                        <th data-col="0" style="width: 45px;">☑<div class="resize-handle"></div></th>
+                        <th data-col="0" style="width: 45px;"><input type="checkbox" id="listSelectAll" onclick="toggleListAll(this)" style="margin:0; transform:scale(1.1);"><div class="resize-handle"></div></th>
                         <th data-col="1" style="width: 50px;">ID<div class="resize-handle"></div></th>
                         <th data-col="2" style="width: 100px;">日付<div class="resize-handle"></div></th>
                         <th data-col="3" style="width: 85px;">種別<div class="resize-handle"></div></th>
@@ -585,8 +585,10 @@
         const tbody = document.getElementById("listTableBody");
         if(!tbody) return;
         tbody.innerHTML = "";
+        const selAll = document.getElementById("listSelectAll");
+        if (selAll) selAll.checked = false;
         if (documents.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; padding:40px;">📭 登録されたデータはありません。新規登録タブから追加してください</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="10" style="text-align:center; padding:40px;"> 登録されたデータはありません。新規登録タブから追加してください</td></tr>';
             return;
         }
         const sortedDocs = [...documents].sort((a,b) => new Date(a.date) - new Date(b.date));
@@ -706,6 +708,10 @@
 
     window.togglePrintAll = function(chk) {
         document.querySelectorAll('.print-check').forEach(c => c.checked = chk.checked);
+    };
+    
+    window.toggleListAll = function(chk) {
+        document.querySelectorAll('.row-check').forEach(c => c.checked = chk.checked);
     };
     
     window.generateDocumentAndPrint = function() {
