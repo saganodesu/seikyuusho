@@ -426,14 +426,14 @@
                 <div class="checkbox-group"><input type="checkbox" id="linkCalc" checked><label for="linkCalc" style="margin:0; font-size:0.85rem;">数量 × 単価 を自動計算する</label></div>
             </div>
         </div>
-        <button class="btn-primary" onclick="registerNewRecord()">✅ 登録する</button>
+        <button class="btn-primary" onclick="registerNewRecord()"> 登録する</button>
     </div>
 
     <div id="printPanel" class="panel-base">
         <div class="print-controls" style="display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 25px;">
-            <div style="flex:1; min-width: 200px;"><label>📌 宛名 (御中)</label><input type="text" id="invoiceRecipient" class="input-field" placeholder="例：株式会社〇〇 御中" value="御中"></div>
-            <div style="flex:1; min-width: 250px;"><label>📝 件名</label><input type="text" id="invoiceSubject" class="input-field" placeholder="例：2025年1月分 修理費用のご請求" value="作業費用のご請求書"></div>
-            <div><button class="btn-primary print-btn" onclick="generateDocumentAndPrint()">🖨️ 印刷 / PDF保存</button></div>
+            <div style="flex:1; min-width: 200px;"><label> 宛名 (御中)</label><input type="text" id="invoiceRecipient" class="input-field" placeholder="例：株式会社〇〇 御中" value="御中"></div>
+            <div style="flex:1; min-width: 250px;"><label> 件名</label><input type="text" id="invoiceSubject" class="input-field" placeholder="例：2025年1月分 修理費用のご請求" value="作業費用のご請求書"></div>
+            <div><button class="btn-primary print-btn" onclick="generateDocumentAndPrint()"> 印刷 / PDF保存</button></div>
         </div>
         <div class="data-table-wrapper" style="margin-bottom:20px;">
             <table class="resizable-table" id="printSelectTable">
@@ -479,7 +479,7 @@
                 <div class="checkbox-group"><input type="checkbox" id="editLinkCalc" checked><label for="editLinkCalc" style="margin:0; font-size:0.85rem;">数量 × 単価 を自動計算する</label></div>
             </div>
         </div>
-        <div style="display:flex; gap:12px;"><button class="btn-primary" onclick="saveEditRecord()">✅ 更新する</button><button class="btn-icon btn-edit" onclick="switchTab('list')" style="background:#eef2f7;">🔙 キャンセル</button></div>
+        <div style="display:flex; gap:12px;"><button class="btn-primary" onclick="saveEditRecord()"> 更新する</button><button class="btn-icon btn-edit" onclick="switchTab('list')" style="background:#eef2f7;">🔙 キャンセル</button></div>
     </div>
 </div>
 
@@ -492,11 +492,11 @@
         if(saved && saved.trim() !== "") {
             try {
                 documents = JSON.parse(saved);
-                console.log(`✅ ${documents.length}件のデータを読み込みました`);
+                console.log(` ${documents.length}件のデータを読み込みました`);
             } catch(e) { documents = []; }
         } else {
             documents = [];
-            console.log("📭 データは空です。新規登録してください");
+            console.log(" データは空です。新規登録してください");
         }
     }
     
@@ -680,7 +680,7 @@
         document.getElementById("newAmount").value = "";
         refreshAll();
         const t = document.createElement('div');
-        t.textContent = `✅ 新規ID: ${newId} 登録完了`;
+        t.textContent = ` 新規ID: ${newId} 登録完了`;
         t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#143e58;color:#fff;padding:10px 20px;border-radius:30px;font-size:0.85rem;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:9999;opacity:0;transition:opacity .2s;';
         document.body.appendChild(t);
         requestAnimationFrame(() => t.style.opacity = '1');
