@@ -679,8 +679,13 @@
         document.getElementById("newPrice").value = "";
         document.getElementById("newAmount").value = "";
         refreshAll();
-        alert(`✅ 新規ID: ${newId} 登録完了`);
-        switchTab("list");
+        const t = document.createElement('div');
+        t.textContent = `✅ 新規ID: ${newId} 登録完了`;
+        t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#143e58;color:#fff;padding:10px 20px;border-radius:30px;font-size:0.85rem;box-shadow:0 8px 20px rgba(0,0,0,0.2);z-index:9999;opacity:0;transition:opacity .2s;';
+        document.body.appendChild(t);
+        requestAnimationFrame(() => t.style.opacity = '1');
+        setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 200); }, 1500);
+        document.getElementById("newVehicle").focus();
     };
 
     function renderPrintTable() {
