@@ -372,7 +372,7 @@
 <div class="container">
     <div class="corporate-header">
         <div class="brand">
-            <h1>請求書システム</h1>
+            <h1>請求書作成</h1>
             <small>株式会社メカワーク </small>
         </div>
         <div class="company-address">
@@ -781,11 +781,54 @@
     document.getElementById('editQty')?.addEventListener('input', autoCalcAmountEdit);
     document.getElementById('editPrice')?.addEventListener('input', autoCalcAmountEdit);
 
+        // 新規登録フォーム：Enterで次の入力欄へ（IME変換確定のEnterは無視）
+    function setupEnterNavigation() {
+        const panel = document.getElementById('addPanel');
+        if (!panel) return;
+
+        // 移動対象のフィールドをDOM順で取得（Gridのauto-fitなのでDOM順＝右→下の順）
+        function getFocusableFields() {
+            return Array.from(panel.querySelectorAll('input, select, textarea'))
+                .filter(el => {
+                    if (el.disabled) return false;
+                    if (el.type === 'hidden' || el.type === 'checkbox' || el.type === 'radio') return false;
+                    if (el.offsetParent === null) return false;
+                    return true;
+                });
+        }
+
+        panel.addEventListener('keydown', function (e) {
+            if (e.key !== 'Enter') return;
+            // IME変換中のEnterはスキップ（＝日本語入力時は「Enter2回」で移動）
+            if (e.isComposing || e.keyCode === 229) return;
+
+            const t = e.target;
+            if (!t.matches('input, select, textarea')) return;
+            if (t.type === 'checkbox' || t.type === 'radio') return;
+
+            const fields = getFocusableFields();
+            const idx = fields.indexOf(t);
+            if (idx === -1) return;
+
+            e.preventDefault();
+
+            if (idx < fields.length - 1) {
+                // 次の欄（右、右がなければ次の行＝下）へ
+                fields[idx + 1].focus();
+            } else {
+                // 最後の欄 → 登録ボタンを押す
+                const btn = panel.querySelector('.btn-primary');
+                if (btn) btn.click();
+            }
+        });
+    }
+
     // 初期化
     loadData();
     refreshAll();
     switchTab('list');
     if(!document.getElementById("newDate").value) document.getElementById("newDate").value = new Date().toISOString().split('T')[0];
+    setupEnterNavigation();
 </script>
 </body>
 </html>
